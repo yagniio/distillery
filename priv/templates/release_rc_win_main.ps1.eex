@@ -63,7 +63,7 @@ $Env:REL_NAME = $rel_name
 # Current version of the release
 $Env:REL_VSN = $rel_vsn
 # Options passed to erl
-$Env:ERL_OPTS = "<%= release.profile.erl_opts %>"
+if (-not (Test-Path Env:ERL_OPTS)) { $Env:ERL_OPTS = "<%= release.profile.erl_opts %>" }
 # Current version of ERTS being used
 # If this is not present/unset, it will be detected
 <%= if ((is_binary(include_erts) or include_erts) and not is_nil(erts_vsn)) do %>$Env:ERTS_VSN = "<%= erts_vsn %>"<% end %>
